@@ -16,6 +16,11 @@ module VagrantPlugins
         require 'vagrant-bindfs/cap/debian/bindfs_install'
         Cap::Debian::BindfsInstall
       end
+      
+      guest_capability("redhat", "bindfs_install") do
+        require 'vagrant-bindfs/cap/redhat/bindfs_install'
+        Cap::RedHat::BindfsInstall
+      end
 
       guest_capability("linux", "bindfs_installed") do
         require 'vagrant-bindfs/cap/linux/bindfs_installed'
