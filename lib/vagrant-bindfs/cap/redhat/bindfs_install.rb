@@ -6,9 +6,9 @@ module VagrantPlugins
 
           def self.bindfs_install(machine)
             machine.communicate.tap do |comm|
-              if comm.test('grep "CentOS release 6" /etc/centos_version')
+              if comm.test('grep "CentOS release 6" /etc/centos-release')
                 unless comm.test('yum repolist | grep DigiACTive')
-                  comm.sudo('wget -o /etc/yum.repos.d/DigiACTive.CentOS.repo http://digiactive.com.au/digiactive-repo/DigiACTive.CentOS.repo')
+                  comm.sudo('wget -O /etc/yum.repos.d/DigiACTive.CentOS.repo http://digiactive.com.au/digiactive-repo/DigiACTive.CentOS.repo')
                 end
               end
               comm.sudo('yum -y install bindfs')
